@@ -53,7 +53,7 @@ const defaultProps = {
   withPortal: false,
   withFullScreenPortal: false,
   initialVisibleMonth: null,
-  numberOfMonths: 2,
+  numberOfMonths: 1,
   keepOpenOnDateSelect: false,
   reopenPickerOnClearDate: false,
   isRTL: false,
@@ -71,7 +71,7 @@ const defaultProps = {
   renderDayContents: null,
   enableOutsideDays: false,
   isDayBlocked: () => false,
-  isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
+  isOutsideRange: (day) => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => {},
 
   // internationalization props

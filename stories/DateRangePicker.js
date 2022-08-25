@@ -12,21 +12,23 @@ import {
 
 import DateRangePickerWrapper from '../examples/DateRangePickerWrapper';
 
-const TestInput = props => (
-  <div style={{ marginTop: 16 }}>
-    <input
-      {...props}
-      type="text"
-      style={{
-        height: 48,
-        width: 284,
-        fontSize: 18,
-        fontWeight: 200,
-        padding: '12px 16px',
-      }}
-    />
-  </div>
-);
+function TestInput(props) {
+  return (
+    <div style={{ marginTop: 16 }}>
+      <input
+        {...props}
+        type="text"
+        style={{
+          height: 48,
+          width: 284,
+          fontSize: 18,
+          fontWeight: 200,
+          padding: '12px 16px',
+        }}
+      />
+    </div>
+  );
+}
 
 class TestWrapper extends React.Component {
   constructor(props) {
@@ -48,7 +50,7 @@ class TestWrapper extends React.Component {
           Show me!
         </button>
 
-        <div style={{ display }}>
+        <div>
           <DateRangePickerWrapper />
         </div>
       </div>
@@ -95,8 +97,8 @@ storiesOf('DateRangePicker (DRP)', module)
         stateDateWrapper={momentJalaali}
         startDatePlaceholderText="تاریخ شروع"
         endDatePlaceholderText="تاریخ پایان"
-        renderMonthText={month => momentJalaali(month).format('jMMMM jYYYY')}
-        renderDayContents={day => momentJalaali(day).format('jD')}
+        renderMonthText={(month) => momentJalaali(month).format('jMMMM jYYYY')}
+        renderDayContents={(day) => momentJalaali(day).format('jD')}
       />
     );
   }))

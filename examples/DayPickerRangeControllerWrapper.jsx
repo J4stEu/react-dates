@@ -77,7 +77,7 @@ const defaultProps = {
   renderDayContents: null,
   minimumNights: 1,
   isDayBlocked: () => false,
-  isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
+  isOutsideRange: (day) => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => false,
   enableOutsideDays: false,
   daysViolatingMinNightsCanBeClicked: false,
@@ -172,8 +172,8 @@ class DayPickerRangeControllerWrapper extends React.Component {
       <div style={{ height: '100%' }}>
         {showInputs && (
           <div style={{ marginBottom: 16 }}>
-            <input type="text" name="start date" value={startDateString} readOnly />
-            <input type="text" name="end date" value={endDateString} readOnly />
+            <input type="text" name="start date" value={startDateString} />
+            <input type="text" name="end date" value={endDateString} />
           </div>
         )}
 

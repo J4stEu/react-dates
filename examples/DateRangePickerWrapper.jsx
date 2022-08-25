@@ -88,15 +88,16 @@ const defaultProps = {
   minimumNights: 1,
   enableOutsideDays: false,
   isDayBlocked: () => false,
-  isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
+  isOutsideRange: (day) => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => false,
+  firstDayOfWeek: 1,
 
   // internationalization
   displayFormat: () => moment.localeData().longDateFormat('L'),
   monthFormat: 'MMMM YYYY',
   phrases: DateRangePickerPhrases,
 
-  stateDateWrapper: date => date,
+  stateDateWrapper: (date) => date,
 };
 
 class DateRangePickerWrapper extends React.Component {

@@ -61,7 +61,7 @@ const defaultProps = {
   renderCalendarDay: undefined,
   renderDayContents: null,
   isDayBlocked: () => false,
-  isOutsideRange: day => !isInclusivelyAfterDay(day, moment()),
+  isOutsideRange: (day) => !isInclusivelyAfterDay(day, moment()),
   isDayHighlighted: () => false,
   enableOutsideDays: false,
 
@@ -98,15 +98,24 @@ class DayPickerSingleDateControllerWrapper extends React.Component {
 
     this.onDateChange = this.onDateChange.bind(this);
     this.onFocusChange = this.onFocusChange.bind(this);
+    this.formate = this.formate.bind(this);
   }
 
   onDateChange(date) {
+    console.log(date);
     this.setState({ date });
   }
 
   onFocusChange() {
     // Force the focused states to always be truthy so that date is always selectable
     this.setState({ focused: true });
+  }
+
+  formate(date) {
+    console.log(date);
+    const dt = new Date(date);
+    console.log(dt.toString() === 'Invalid date');
+    if (dt.toString() !== 'Invalid Date') this.setState({ date: moment(dt, 'YYYY-MM-DD') });
   }
 
   render() {
@@ -119,13 +128,13 @@ class DayPickerSingleDateControllerWrapper extends React.Component {
       'showInput',
     ]);
 
-    const dateString = date && date.format('YYYY-MM-DD');
+    // const dateString = date && date.format('YYYY-MM-DD');
 
     return (
       <div>
         {showInput && (
           <div style={{ marginBottom: 16 }}>
-            <input type="text" name="start date" value={dateString || ''} readOnly />
+            <input type="text" name="start date" onChange={(event) => this.formate(event.target.value)} />
           </div>
         )}
 
